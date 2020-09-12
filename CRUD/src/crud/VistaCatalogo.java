@@ -11,10 +11,12 @@ package crud;
  */
 import java.awt.GridLayout;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 import javax.swing.*;
 public class VistaCatalogo extends JFrame{
     
-    JTextField RFC;
+        JTextField RFC;
 	JTextField Nombre;
 	JTextField Edad;
 	JTextField IDCiudad;
@@ -43,6 +45,7 @@ public class VistaCatalogo extends JFrame{
 		Nombre=new JTextField();
 		Edad=new JTextField();
 		IDCiudad=new JTextField();
+               
 		
 		BtnGrabar=new JButton("Grabar");
 		BtnBorrar=new JButton("Borrar");
@@ -66,16 +69,39 @@ public class VistaCatalogo extends JFrame{
 		add(BtnBorrar);
 		add(BtnRecuperar);
 		add(BtnModificar);
-		add(BtnConsultar);
+		add(BtnConsultar);	
 		
-	
-		
-		
-		
-		
-		
-		
+               
+              RFC.addKeyListener(new KeyAdapter() {
+       
+               public void keyTyped(KeyEvent e) {
+                    if (RFC.getText().length() >= 10 ) // limit to 10 characters
+                        e.consume();
+                      }
+                });
+              
+              Edad.addKeyListener(new KeyAdapter(){
+              public void keyTyped(KeyEvent e){
+              char caracter = e.getKeyChar();
+              if (((caracter < '0') || (caracter > '9')))
+                  e.consume();
+              }
+              });
+              
+              IDCiudad.addKeyListener(new KeyAdapter(){
+              public void keyTyped(KeyEvent e){
+              char caracter = e.getKeyChar();
+              if (((caracter < '0') || (caracter > '9')))
+                  e.consume();
+              }
+              });
+                  
+             
+              
 	}
+           
+        
+        
 	/*public void setControlador(ConvertidorControldor c) {
 		BtnPesos.addActionListener(c);
 		BtnDolares.addActionListener(c);

@@ -9,6 +9,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.Vector;
 import java.util.logging.Level;
 
@@ -92,32 +93,36 @@ public class DALCatalogo
     }
        //------------------------------------------------------------------------------------------------------//------------------------------------------------------------------------------------------------------
        
-    public Vector select()
+    public ArrayList<CatalogoDeClientes> select()
     {
-        Vector dato=new Vector();
+        ArrayList<CatalogoDeClientes> listaCatalogoClientes = new ArrayList<CatalogoDeClientes>();
         try 
         {
             Connection con = cn.Getconexion();
             PreparedStatement ps = con.prepareCall("exec sp_selectclientes");
             ResultSet rs= ps.executeQuery();
-            while(rs.next()){
-            dato.add(rs.getString(1));
-            dato.add(rs.getString(2));
-            dato.add(rs.getInt(3));
-            dato.add(rs.getInt(4));
-            con.close();
-            con = null;
-               
-        }
-            
-        return dato;
+            while(rs.next())
+            {
+                
+                CatalogoDeClientes catalogoDeClientes = new CatalogoDeClientes();
+                catalogoDeClientes.setRFC(rs.getString(1));
+                catalogoDeClientes.setNombre(rs.getString(2));
+                catalogoDeClientes.setEdad(rs.getInt(3));
+                catalogoDeClientes.setIDCiudad(rs.getInt(4));
+                listaCatalogoClientes.add(catalogoDeClientes);
+                
+            }
+        con.close();
+        con = null;
+        return listaCatalogoClientes;
         
         }
         catch (SQLException ex) 
         {
             java.util.logging.Logger.getLogger(ConexionDB.class.getName()).log(Level.SEVERE, null, ex);
-        }
             return null;
+        }
+            
     }
        //---------------------------------------------------------------------------- 
     public CatalogoDeClientes selectcliente(String rfc)

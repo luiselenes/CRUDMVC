@@ -5,6 +5,8 @@
  */
 package crud;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author EQUIPO
@@ -69,6 +71,11 @@ public class ModeloCatalogo
         {
             return false;
         }
+    }
+    
+    public ArrayList<CatalogoDeClientes> consultar()
+    {
+        return dalCatalogo.select();
     }
     
 }

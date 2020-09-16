@@ -112,7 +112,7 @@ public class VistaCatalogo extends JFrame{
         }
 
     public void setNombre(String Nombre) {
-        this.Nombre = new JTextField(Nombre);
+        this.Nombre.setText(Nombre);
     }
 
     public void setEdad(int Edad) {

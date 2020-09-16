@@ -13,6 +13,7 @@ package crud;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 /**
  *
@@ -79,6 +80,12 @@ public class ControladorCatalogo implements ActionListener {
             }
  
         
+        }
+        else if (e.getSource()== vista.BtnConsultar)
+        {
+            ArrayList<CatalogoDeClientes> listaCatalogo = modelo.consultar();
+            //aqui implementarias lo del grid con los datos de la tabla, listaCatalogo trae todos los registros
+            //de la tabla
         }
        
     }

@@ -11,9 +11,13 @@ public class AplicacionCatalogo {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-       VistaCatalogo Vista=new VistaCatalogo();
-			Vista.Muestrate();
-
+        ModeloCatalogo modelo = new ModeloCatalogo();
+        VistaCatalogo vista = new VistaCatalogo();
+        ControladorCatalogo controlador = new ControladorCatalogo(modelo, vista);
+        vista.setControlador(controlador);
+        vista.Muestrate();
+        //VistaConsulta Vistatabla=new VistaConsulta();
+//			Vistatabla.HazInterfaz();
     }
     
 }

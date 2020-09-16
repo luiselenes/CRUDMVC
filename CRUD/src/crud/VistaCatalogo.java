@@ -36,7 +36,8 @@ public class VistaCatalogo extends JFrame{
 		super("Catalogo de Clientes");
 		HazInterfaz();
 	}
-	private void HazInterfaz() {
+	private void HazInterfaz() 
+        {
 		setSize(250,150);
 		setLocationRelativeTo(null);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -71,53 +72,64 @@ public class VistaCatalogo extends JFrame{
 		add(BtnModificar);
 		add(BtnConsultar);	
 		
-               
-              RFC.addKeyListener(new KeyAdapter() {
-       
-               public void keyTyped(KeyEvent e) {
-                    if (RFC.getText().length() >= 10 ) // limit to 10 characters
-                        e.consume();
-                      }
-                });
-              
-              Edad.addKeyListener(new KeyAdapter(){
-              public void keyTyped(KeyEvent e){
-              char caracter = e.getKeyChar();
-              if (((caracter < '0') || (caracter > '9')))
-                  e.consume();
-              }
-              });
-              
-              IDCiudad.addKeyListener(new KeyAdapter(){
-              public void keyTyped(KeyEvent e){
-              char caracter = e.getKeyChar();
-              if (((caracter < '0') || (caracter > '9')))
-                  e.consume();
-              }
-              });
-                  
-             
-              
-	}
+        }       
+    public String getRFC() 
+    {
+        return RFC.getText();
+    }
+
+    public String getNombre() 
+    {
+        return Nombre.getText();
+    }
+
+    public int getEdad() 
+    {
+        return Integer.parseInt(Edad.getText());
+    }
+
+    public int getIDCiudad() 
+    {
+        return Integer.parseInt(IDCiudad.getText());
+    }
            
         
-        
-	/*public void setControlador(ConvertidorControldor c) {
-		BtnPesos.addActionListener(c);
-		BtnDolares.addActionListener(c);
-	}	*/
-	public void Muestrate() {
-		setVisible(true);
+         public void setControlador(ControladorCatalogo c) {
+		BtnGrabar.addActionListener(c);
+		BtnBorrar.addActionListener(c);
+		BtnRecuperar.addActionListener(c);
+		BtnModificar.addActionListener(c);
+                BtnConsultar.addActionListener(c);
+         }
+	public void Muestrate() 
+        {
+            setVisible(true);
 	}
-	/*public float getCantidad() {
-		try {
-			return Float.parseFloat(Txt.getText());
-		}catch (Exception E) {
-			return 0;
-		}
-	}
-	public void setResultado(float Cantidad) {
-		Resultado.setText(Cantidad+"");
-	}*/
+	
+       public void correcto()
+        {
+           JOptionPane.showMessageDialog(null, "Se ha realizado de manera correcta la operacion");
+        }
+
+    public void setNombre(String Nombre) {
+        this.Nombre = new JTextField(Nombre);
+    }
+
+    public void setEdad(int Edad) {
+        this.Edad = new JTextField(Integer.toString(Edad));
+    }
+
+    public void setIDCiudad(int IDCiudad) {
+        this.IDCiudad = new JTextField(Integer.toString(IDCiudad));
+    }
+    
+    public void actualizaDatos(CatalogoDeClientes cliente)
+    {
+        this.setNombre(cliente.getNombre());
+        this.setEdad(cliente.getEdad());
+        this.setIDCiudad(cliente.IDCiudad);
+    }
+    
+    
     
 }

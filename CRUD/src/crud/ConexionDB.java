@@ -46,24 +46,10 @@ public class ConexionDB {
 		return con;
 	}
         //------------------------------------------------------------------------------------------------------
-	/*public static void main(String[] args){
+	public static void main(String[] args){
 		ConexionDB cn = new ConexionDB();
-                //Getconetiion();
-                //S ystem.out.println("ya entre ");
-           //  cn.insertar("ee23","alfredo",50,1);
-           // cn.select();
-         /*System.out.println("aaaaaaa");
-           for(int i=0;i<=3;i++){
-               System.out.println(cn.select().size());
-    
-                   System.out.println("aaaaaaa");
-           }
-            //cn.select().get(0);
-           */
-         // cn.borrar("abc");
-         
-        // System.out.println(cn.select().elementAt(9));
-	
+               System.out.println(cn.selectcliente("ESZR730527"));
+        }
         //------------------------------------------------------------------------------------------------------
         public  void insertar(String rfc,String nombre,int edad,int idciudad ){
            // String query ="insert into  'Clientes' ('RFC','Nombre','edad','IdCiudad')values"+ 
@@ -127,6 +113,27 @@ public class ConexionDB {
            
             
              return dato;
+            
+        } catch (SQLException ex) {
+            java.util.logging.Logger.getLogger(ConexionDB.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
+          }
+       //---------------------------------------------------------------------------- 
+        public Vector  selectcliente(String rfc){
+         Vector dato=new Vector();
+            
+        try {
+            Connection con = conexion();
+            PreparedStatement ps = con.prepareCall("exec sp_selectcliente ?");
+            ps.setString(1,rfc);
+            ResultSet rs= ps.executeQuery();
+            while(rs.next()){
+            dato.add(rs.getString(1));
+            dato.add(rs.getString(2));
+            dato.add(rs.getInt(3));
+            }
+            return dato;
             
         } catch (SQLException ex) {
             java.util.logging.Logger.getLogger(ConexionDB.class.getName()).log(Level.SEVERE, null, ex);

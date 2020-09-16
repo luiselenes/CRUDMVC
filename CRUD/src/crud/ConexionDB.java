@@ -67,7 +67,7 @@ public class ConexionDB {
         //------------------------------------------------------------------------------------------------------
         public  void insertar(String rfc,String nombre,int edad,int idciudad ){
            // String query ="insert into  'Clientes' ('RFC','Nombre','edad','IdCiudad')values"+ 
-                       //   "('" +rfc +"','"+nombre+"','"+edad+"','"+idciudad+"')";
+                          //   "('" +rfc +"','"+nombre+"','"+edad+"','"+idciudad+"')";
             Connection con = conexion();
         try {
           PreparedStatement ps = con.prepareCall("exec sp_registrarcliente ?,?,?,?");

@@ -16,8 +16,7 @@ public class AplicacionCatalogo {
         ControladorCatalogo controlador = new ControladorCatalogo(modelo, vista);
         vista.setControlador(controlador);
         vista.Muestrate();
-        //VistaConsulta Vistatabla=new VistaConsulta();
-//			Vistatabla.HazInterfaz();
+       
     }
     
 }

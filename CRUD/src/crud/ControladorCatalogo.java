@@ -48,6 +48,11 @@ public class ControladorCatalogo implements ActionListener {
             {
                 vista.correcto();
             }
+            else
+            {
+              //  vista.RFCINCORRECTO();
+                vista.incorrecto();
+            }
             
             return;
 	}
@@ -61,6 +66,12 @@ public class ControladorCatalogo implements ActionListener {
             )
             {
                 vista.correcto();
+                
+            }
+            else
+            {
+            // vista.RFCINCORRECTO();
+             vista.incorrecto();
             }
             return;
 	}
@@ -71,6 +82,11 @@ public class ControladorCatalogo implements ActionListener {
             {
                 vista.correcto();
             }
+            else 
+            {
+                vista.RFCINCORRECTO();
+                vista.incorrecto();
+            }
         }
         
         else if (e.getSource()==vista.BtnRecuperar)
@@ -80,6 +96,10 @@ public class ControladorCatalogo implements ActionListener {
             {
                 vista.actualizaDatos(catalogoDeClientes);
                 vista.correcto();
+            }
+            else 
+            {
+                vista.incorrecto();
             }
  
         

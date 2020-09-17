@@ -14,6 +14,8 @@ package crud;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -22,6 +24,7 @@ import java.util.ArrayList;
 public class ControladorCatalogo implements ActionListener {
     ModeloCatalogo modelo;
     VistaCatalogo vista;
+    VistaConsulta vistaconsulta;
 
     public ControladorCatalogo(ModeloCatalogo modelo, VistaCatalogo vista) {
         this.modelo = modelo;
@@ -38,8 +41,8 @@ public class ControladorCatalogo implements ActionListener {
                 (   
                     vista.getRFC(),
                     vista.getNombre(),
-                    vista.getIDCiudad(),
-                    vista.getEdad()
+                    vista.getEdad(),
+                    vista.getIDCiudad()
                 )
             )
             {
@@ -83,7 +86,11 @@ public class ControladorCatalogo implements ActionListener {
         }
         else if (e.getSource()== vista.BtnConsultar)
         {
-            ArrayList<CatalogoDeClientes> listaCatalogo = modelo.consultar();
+          vistaconsulta =new VistaConsulta();
+            vistaconsulta.HazInterfaz();
+            for (int i = 0; i <modelo.longitud(); i++) {
+           vistaconsulta.drm.addRow(modelo.consultar(i));
+        }
             //aqui implementarias lo del grid con los datos de la tabla, listaCatalogo trae todos los registros
             //de la tabla
         }

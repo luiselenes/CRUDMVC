@@ -5,6 +5,8 @@
  */
 package crud;
 
+import java.awt.List;
+import java.sql.Array;
 import java.util.ArrayList;
 
 /**
@@ -73,9 +75,22 @@ public class ModeloCatalogo
         }
     }
     
-    public ArrayList<CatalogoDeClientes> consultar()
+    public Object[] consultar(int i)
     {
-        return dalCatalogo.select();
+        
+        VistaConsulta vista=new VistaConsulta();
+        ArrayList list = new ArrayList();
+        Object [] ob = new Object[4];
+            ob[0]=dalCatalogo.select().get(i).RFC;
+            ob[1]=dalCatalogo.select().get(i).Nombre;
+            ob[2]=dalCatalogo.select().get(i).Edad;
+            ob[3]=dalCatalogo.select().get(i).IDCiudad;
+          return ob;
     }
+    public int longitud(){
+        int l = dalCatalogo.select().size();
+                return l ;   
+    }
+    
     
 }

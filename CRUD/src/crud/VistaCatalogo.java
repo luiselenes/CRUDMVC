@@ -116,18 +116,18 @@ public class VistaCatalogo extends JFrame{
     }
 
     public void setEdad(int Edad) {
-        this.Edad = new JTextField(Integer.toString(Edad));
+    this.Edad.setText(Integer.toString(Edad));
     }
 
     public void setIDCiudad(int IDCiudad) {
-        this.IDCiudad = new JTextField(Integer.toString(IDCiudad));
+        this.IDCiudad.setText(Integer.toString(IDCiudad));
     }
     
     public void actualizaDatos(CatalogoDeClientes cliente)
     {
         this.setNombre(cliente.getNombre());
         this.setEdad(cliente.getEdad());
-        this.setIDCiudad(cliente.IDCiudad);
+        this.setIDCiudad(cliente.getIDCiudad());
     }
     
     

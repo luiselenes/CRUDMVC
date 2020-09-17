@@ -16,9 +16,13 @@ import javax.swing.table.DefaultTableModel;
  * @author lu
  */
 public class VistaConsulta{
-    ConexionDB con =new ConexionDB();
-     private void HazInterfaz() {
-        DefaultTableModel drm  = new DefaultTableModel() ;
+  
+    DefaultTableModel drm  = new DefaultTableModel() ;
+    DALCatalogo dal =new DALCatalogo();
+    
+    public void HazInterfaz() {
+         DALCatalogo dal=new DALCatalogo();
+         ModeloCatalogo modelo = new  ModeloCatalogo();
         drm.addColumn("RFC");
         drm.addColumn("NOMBRE");
         drm.addColumn("EDAD");
@@ -38,17 +42,16 @@ public class VistaConsulta{
         ventana.setVisible(true);
         tabla.setModel(drm);
         
-//         for (int i = 0; i <con.select().size() ; i++) 
-//         {
-//                drm.addRow(con.select());
-//                     
-//        }
-           
-	
+       
        
        
     }
-
+     
+     /* public static void main(String[] args) {
+         VistaConsulta a =new VistaConsulta();
+         a.HazInterfaz();
+      }
+*/
 //     public void Muestrate() {
 //         
 //         setVisible(true);

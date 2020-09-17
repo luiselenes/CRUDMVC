@@ -90,6 +90,7 @@ public class ControladorCatalogo implements ActionListener {
             vistaconsulta.HazInterfaz();
             for (int i = 0; i <modelo.longitud(); i++) {
            vistaconsulta.drm.addRow(modelo.consultar(i));
+           
         }
             //aqui implementarias lo del grid con los datos de la tabla, listaCatalogo trae todos los registros
             //de la tabla

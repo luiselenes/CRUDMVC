@@ -8,6 +8,7 @@ package crud;
 import java.awt.List;
 import java.sql.Array;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -24,53 +25,62 @@ public class ModeloCatalogo
     
     public boolean insertar(String rfc, String nombre, int edad, int idCiudad)
     {
-        if(edad!=0 && idCiudad!=0 && nombre!=null && validaRFC())
+        if(edad!=0 && idCiudad!=0 && nombre!=null && validaRFC(rfc))
         {
             
             return dalCatalogo.insertar(rfc, nombre, edad, idCiudad);
            
         }
-    
+        else
+        {
+           
         return false;
+        }
     }
     
     public boolean borrar(String rfc)
     {
-        if (validaRFC())
+        if (validaRFC(rfc))
         {
             return dalCatalogo.borrar(rfc);
         }
         else
         {
+           
             return false;
         }
     }
     
-    public boolean validaRFC()
-    {
-        
-       return true;
-    }
-    
+    public boolean validaRFC(String rfc){
+          if(rfc.length() !=10 || rfc== ""){
+            return false;
+            } 
+          else{
+            rfc=rfc.toUpperCase().trim();
+            return rfc.toUpperCase().matches("[A-Z]{4}[0-9]{6}");
+             }   
+         }
     public CatalogoDeClientes recuperar(String rfc)
     {
-        if (validaRFC())
+        if (validaRFC(rfc))
         {
             return dalCatalogo.selectcliente(rfc);
         }
         else
         {
+            
             return null;
         }
     }
     public boolean modificar(String rfc, String nombre, int edad, int idCiudad)
     {
-        if(edad!=0 && idCiudad!=0 && nombre!=null && validaRFC())
+        if(edad!=0 && idCiudad!=0 && nombre!=null && validaRFC(rfc))
         {
             return dalCatalogo.modificar(rfc, nombre, edad, idCiudad);
         }
         else
         {
+            
             return false;
         }
     }

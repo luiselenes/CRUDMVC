@@ -38,19 +38,19 @@ public class ConexionDB
 	}
         catch (ClassNotFoundException e) 
         {		
-            JOptionPane.showMessageDialog(null, e, "Error con la clase del driver de SqlServer: " + e.getMessage(),
-					JOptionPane.ERROR_MESSAGE);
+          //  JOptionPane.showMessageDialog(null, e, "Error con la clase del driver de SqlServer: " + e.getMessage(),
+					//JOptionPane.ERROR_MESSAGE);
 			con = null;
 	} 
         catch (SQLException e)
         {
-			JOptionPane.showMessageDialog(null, e, "Error en la conexion con la BD: " + e.getMessage(),
-					JOptionPane.ERROR_MESSAGE);
+		//	JOptionPane.showMessageDialog(null, e, "Error en la conexion con la BD: " + e.getMessage(),
+					//JOptionPane.ERROR_MESSAGE);
 			con = null;
 	}
         catch (Exception e)
         {
-			JOptionPane.showMessageDialog(null, e, "Error del sistema: " + e.getMessage(), JOptionPane.ERROR_MESSAGE);
+		//	JOptionPane.showMessageDialog(null, e, "Error del sistema: " + e.getMessage(), JOptionPane.ERROR_MESSAGE);
 			con = null;
 			
 	}

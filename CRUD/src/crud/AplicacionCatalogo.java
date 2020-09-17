@@ -13,9 +13,11 @@ public class AplicacionCatalogo {
     public static void main(String[] args) {
         ModeloCatalogo modelo = new ModeloCatalogo();
         VistaCatalogo vista = new VistaCatalogo();
+        VistaConsulta VistaConsulta = new VistaConsulta();
         ControladorCatalogo controlador = new ControladorCatalogo(modelo, vista);
         vista.setControlador(controlador);
         vista.Muestrate();
+        
        
     }
     

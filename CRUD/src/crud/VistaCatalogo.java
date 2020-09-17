@@ -38,7 +38,7 @@ public class VistaCatalogo extends JFrame{
 	}
 	private void HazInterfaz() 
         {
-		setSize(250,150);
+		setSize(900,400);
 		setLocationRelativeTo(null);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setLayout(new GridLayout(0,2));
@@ -71,6 +71,42 @@ public class VistaCatalogo extends JFrame{
 		add(BtnRecuperar);
 		add(BtnModificar);
 		add(BtnConsultar);	
+                
+                RFC.addKeyListener(new KeyAdapter(){
+                public void keyTyped(KeyEvent e){
+                if(RFC.getText().length() >=10){
+                    e.consume();
+                 }
+                }
+                });
+                
+                 Nombre.addKeyListener(new KeyAdapter(){
+                public void keyTyped(KeyEvent e){
+                if(Nombre.getText().length() > 50){
+                    e.consume();
+                 }
+                }
+                });
+                
+                
+                Edad.addKeyListener(new KeyAdapter(){
+                public void keyTyped(KeyEvent e){
+                char caracter = e.getKeyChar();
+                 if (((caracter < '0') || (caracter > '9')) && (caracter != '\b')) {
+                    e.consume(); 
+                       }
+                 }
+                });
+                
+                IDCiudad.addKeyListener(new KeyAdapter(){
+                public void keyTyped(KeyEvent e){
+                char caracter = e.getKeyChar();
+                 if (((caracter < '0') || (caracter > '9')) && (caracter != '\b')) {
+                    e.consume(); 
+                       }
+                 }
+                });
+                
 		
         }       
     public String getRFC() 
@@ -110,6 +146,16 @@ public class VistaCatalogo extends JFrame{
         {
            JOptionPane.showMessageDialog(null, "Se ha realizado de manera correcta la operacion");
         }
+       public void incorrecto()
+       {
+           JOptionPane.showMessageDialog(null, "Operación incorrecta");
+       }
+       
+       public void RFCINCORRECTO()
+       {
+       JOptionPane.showMessageDialog(null, "Ese RFC es incorrecto");
+       }
+       
 
     public void setNombre(String Nombre) {
         this.Nombre.setText(Nombre);

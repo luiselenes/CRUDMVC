@@ -37,7 +37,7 @@ public class VistaConsulta{
         ventana.setLayout(null);
         ventana.setSize(500, 500);
         ventana.setLocationRelativeTo(null);
-        ventana.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        ventana.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
         ventana.add(scroll);
         ventana.setVisible(true);
         tabla.setModel(drm);

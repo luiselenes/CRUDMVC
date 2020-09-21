@@ -50,7 +50,6 @@ public class ControladorCatalogo implements ActionListener {
             }
             else
             {
-              //  vista.RFCINCORRECTO();
                 vista.incorrecto();
             }
             
@@ -84,7 +83,7 @@ public class ControladorCatalogo implements ActionListener {
             }
             else 
             {
-                vista.RFCINCORRECTO();
+//                vista.RFCINCORRECTO();
                 vista.incorrecto();
             }
         }
@@ -106,15 +105,14 @@ public class ControladorCatalogo implements ActionListener {
         }
         else if (e.getSource()== vista.BtnConsultar)
         {
+          
           vistaconsulta =new VistaConsulta();
-            vistaconsulta.HazInterfaz();
-            for (int i = 0; i <modelo.longitud(); i++) {
-           vistaconsulta.drm.addRow(modelo.consultar(i));
+          vistaconsulta.HazInterfaz();
+          vistaconsulta.llenarTabla(modelo.consultar());
            
         }
-            //aqui implementarias lo del grid con los datos de la tabla, listaCatalogo trae todos los registros
-            //de la tabla
-        }
-       
+        
     }
+       
 }
+

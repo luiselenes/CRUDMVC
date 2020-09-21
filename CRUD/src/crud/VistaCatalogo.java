@@ -9,6 +9,7 @@ package crud;
  *
  * @author Tania Nafarrate B
  */
+import java.awt.Container;
 import java.awt.GridLayout;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
@@ -38,40 +39,60 @@ public class VistaCatalogo extends JFrame{
 	}
 	private void HazInterfaz() 
         {
-		setSize(900,400);
+              
+                setSize(500,200);
 		setLocationRelativeTo(null);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setLayout(new GridLayout(0,2));
+                 JPanel Panelizq=new JPanel();
+                 
+                JPanel PanelDer= new JPanel();
+              
+		setLayout(new GridLayout(0,2,20,30));
+  
+        
 		RFC=new JTextField();
+                
 		Nombre=new JTextField();
 		Edad=new JTextField();
 		IDCiudad=new JTextField();
-               
-		
+                
+                ERFC=new JLabel("RFC: ");
+                ENombre=new JLabel("Nombre: ");
+                EEdad=new JLabel("Edad: ");
+		EIDCiudad=new JLabel("ID de Ciudad: ");
+                        
 		BtnGrabar=new JButton("Grabar");
 		BtnBorrar=new JButton("Borrar");
 		BtnRecuperar = new JButton("Recuperar");
 		BtnModificar = new JButton("Modificar");
-		BtnConsultar = new JButton("Consultar");
-		
-		add(ERFC=new JLabel("RFC: "));
-		add(RFC);
-		
-		add(ENombre=new JLabel("Nombre: "));
-		add(Nombre);
-		
-		add(EEdad=new JLabel("Edad: "));
-		add(Edad);
-		
-		add(EIDCiudad=new JLabel("ID de Ciudad: "));
-		add(IDCiudad);
-		
-		add(BtnGrabar);
-		add(BtnBorrar);
-		add(BtnRecuperar);
-		add(BtnModificar);
-		add(BtnConsultar);	
+		BtnConsultar = new JButton("Consultar"); 
+             
+                        
+           
+                Panelizq.setLayout(new GridLayout(3,2,15,20));
+ 
+                Panelizq.add(ERFC=new JLabel("RFC: "));
+		Panelizq.add(RFC);
+                Panelizq.add(BtnRecuperar);
+                Panelizq.add(BtnBorrar);
+                add (Panelizq);
                 
+                
+                PanelDer.setLayout(new GridLayout(0,2,15,20));
+                
+                PanelDer.add(ENombre=new JLabel("Nombre: "));
+		PanelDer.add(Nombre);
+		
+		PanelDer.add(EEdad=new JLabel("Edad: "));
+		PanelDer.add(Edad);
+		
+		PanelDer.add(EIDCiudad=new JLabel("ID de Ciudad: "));
+		PanelDer.add(IDCiudad);
+		PanelDer.add(BtnGrabar);
+                PanelDer.add(BtnModificar);
+		PanelDer.add(BtnConsultar);
+                add(PanelDer);
+                           
                 RFC.addKeyListener(new KeyAdapter(){
                 public void keyTyped(KeyEvent e){
                 if(RFC.getText().length() >=10){
@@ -121,12 +142,14 @@ public class VistaCatalogo extends JFrame{
 
     public int getEdad() 
     {
-        return Integer.parseInt(Edad.getText());
+        String edad = Edad.getText().equals("") ?  "0" : Edad.getText();
+        return Integer.parseInt(edad);
     }
 
     public int getIDCiudad() 
     {
-        return Integer.parseInt(IDCiudad.getText());
+        String idCiudad = IDCiudad.getText().equals("") ?  "0" : IDCiudad.getText() ;
+        return Integer.parseInt(idCiudad);
     }
            
         
@@ -151,10 +174,10 @@ public class VistaCatalogo extends JFrame{
            JOptionPane.showMessageDialog(null, "Operación incorrecta");
        }
        
-       public void RFCINCORRECTO()
-       {
-       JOptionPane.showMessageDialog(null, "Ese RFC es incorrecto");
-       }
+//       public void RFCINCORRECTO()
+//       {
+//       JOptionPane.showMessageDialog(null, "Ese RFC es incorrecto");
+//       }
        
 
     public void setNombre(String Nombre) {

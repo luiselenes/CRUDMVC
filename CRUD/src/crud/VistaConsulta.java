@@ -3,6 +3,7 @@ package crud;
 
 //import java.awt.GridLayout;
 //import java.util.Vector;
+import java.util.ArrayList;
 import javax.swing.JFrame;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
@@ -18,18 +19,15 @@ import javax.swing.table.DefaultTableModel;
 public class VistaConsulta{
   
     DefaultTableModel drm  = new DefaultTableModel() ;
-    DALCatalogo dal =new DALCatalogo();
     
     public void HazInterfaz() {
-         DALCatalogo dal=new DALCatalogo();
-         ModeloCatalogo modelo = new  ModeloCatalogo();
         drm.addColumn("RFC");
         drm.addColumn("NOMBRE");
         drm.addColumn("EDAD");
         drm.addColumn("IDCIUDAD");
-           drm.setRowCount(0);
+        drm.setRowCount(0);
            
-         String q;
+        String q;
         JTable tabla =new JTable(drm);
         JScrollPane scroll = new JScrollPane(tabla);
         scroll.setBounds(40,40,400,400);
@@ -42,21 +40,16 @@ public class VistaConsulta{
         ventana.setVisible(true);
         tabla.setModel(drm);
         
-       
-       
-       
     }
-     
-     /* public static void main(String[] args) {
-         VistaConsulta a =new VistaConsulta();
-         a.HazInterfaz();
-      }
-*/
-//     public void Muestrate() {
-//         
-//         setVisible(true);
-//     
-//     }
-           
+    
+    public void llenarTabla(ArrayList<CatalogoDeClientes> listaCatalogoDeClientes)
+    {
+        for (CatalogoDeClientes obj : listaCatalogoDeClientes)
+        {
+            Object[] data = {obj.RFC, obj.Nombre, obj.Edad, obj.IDCiudad};
+           drm.addRow(data);
+        
+        }
+    }
 
 }

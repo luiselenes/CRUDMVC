@@ -25,7 +25,7 @@ public class ModeloCatalogo
     
     public boolean insertar(String rfc, String nombre, int edad, int idCiudad)
     {
-        if(edad!=0 && idCiudad!=0 && nombre!=null && validaRFC(rfc))
+        if(edad!=0 && idCiudad!=0 && !nombre.equals("") && validaRFC(rfc))
         {
             
             return dalCatalogo.insertar(rfc, nombre, edad, idCiudad);
@@ -62,19 +62,16 @@ public class ModeloCatalogo
          }
     public CatalogoDeClientes recuperar(String rfc)
     {
+        CatalogoDeClientes catalogoDeClientes = new CatalogoDeClientes();
         if (validaRFC(rfc))
         {
-            return dalCatalogo.selectcliente(rfc);
+            catalogoDeClientes = dalCatalogo.selectcliente(rfc);
         }
-        else
-        {
-            
-            return null;
-        }
+        return catalogoDeClientes;
     }
     public boolean modificar(String rfc, String nombre, int edad, int idCiudad)
     {
-        if(edad!=0 && idCiudad!=0 && nombre!=null && validaRFC(rfc))
+        if(edad!=0 && idCiudad!=0 && !nombre.equals("") && validaRFC(rfc))
         {
             return dalCatalogo.modificar(rfc, nombre, edad, idCiudad);
         }
@@ -85,22 +82,9 @@ public class ModeloCatalogo
         }
     }
     
-    public Object[] consultar(int i)
-    {
-        
-        VistaConsulta vista=new VistaConsulta();
-        ArrayList list = new ArrayList();
-        Object [] ob = new Object[4];
-            ob[0]=dalCatalogo.select().get(i).RFC;
-            ob[1]=dalCatalogo.select().get(i).Nombre;
-            ob[2]=dalCatalogo.select().get(i).Edad;
-            ob[3]=dalCatalogo.select().get(i).IDCiudad;
-          return ob;
+   public ArrayList<CatalogoDeClientes> consultar()
+    { 
+        return dalCatalogo.select();
     }
-    public int longitud(){
-        int l = dalCatalogo.select().size();
-                return l ;   
-    }
-    
     
 }

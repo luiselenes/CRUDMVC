@@ -40,3 +40,5 @@ BEGIN
 	values (@rfc,@nombre,@edad,@idciudad)
 end
 go
+
+--blablablabla

@@ -34,7 +34,7 @@ go
 
 select * from Clientes
 
-
+--checando commit
 create login tec with password = '123'
 GO
 sp_addsrvrolemember tec , sysadmin

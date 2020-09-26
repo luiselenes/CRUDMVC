@@ -1,4 +1,5 @@
---mostar un cliente con el rfc otra cosa
+
+--mostar un cliente con el rfc cambios y otra cosa
 CREATE PROCEDURE sp_selectcliente @rfc nvarchar(13)
 AS
 BEGIN
